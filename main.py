@@ -1,5 +1,5 @@
 import tkinter as tk
-from PIL import Image, ImageTk, ImageDraw
+from PIL import ImageDraw, ImageTk, Image
 import ctypes
 
 try:
@@ -37,7 +37,7 @@ y_offset = (root.winfo_screenheight() - height) // 2
 root.geometry(f"{width}x{height}+{x_offset}+{y_offset}")
 
 # Заголовок "Информация"
-info_bg = create_rounded_rectangle(350, 80, 30, "#4285F4")  # Фон кнопки
+info_bg = create_rounded_rectangle(350, 80, 30, "#0074b4")  # Фон кнопки
 
 info_label = tk.Label(root, image=info_bg, text="Информация", compound="center", fg="white", font=("Arial", 14, "bold"),
                       bd=0)
@@ -45,7 +45,7 @@ info_label.image = info_bg
 info_label.place(x=-50, y=0, width=350, height=80)
 
 # Загрузка изображения для фона квадрата
-cube_image_path = 'cube.png'  # Укажите путь к вашему изображению
+cube_image_path = 'festlogo.PNG'  # Укажите путь к вашему изображению
 cube_image = Image.open(cube_image_path)
 cube_image_resized = cube_image.resize((360, 360))  # Изменяем размер изображения
 cube_photo = ImageTk.PhotoImage(cube_image_resized)
@@ -53,18 +53,15 @@ cube_photo = ImageTk.PhotoImage(cube_image_resized)
 # Основной квадрат с заголовком "IT-Куб Ростов"
 frame_image_label = tk.Label(root, image=cube_photo, bg="#E6EEFF")  # Используем изображение как фон
 frame_image_label.image = cube_photo
-frame_image_label.place(x=118, y=153)
-
-text_below_image = tk.Label(root, text="IT-Куб Ростов", bg="#E6EEFF", fg="#4285F4", font=("Arial", 16, "bold"))
-text_below_image.place(x=188, y=513)
+frame_image_label.place(x=118, y=200)
 
 # Скруглённые кнопки
-button_bg = create_rounded_rectangle(300, 80, 30, "#4285F4")  # Фон кнопки
+button_bg = create_rounded_rectangle(300, 80, 30, "#0074b4")  # Фон кнопки
 button_hover_bg = create_rounded_rectangle(300, 80, 30, "#3472d6")  # Цвет при наведении
 
 # Заголовок меню
 text_menu = tk.Label(root, text="Меню", bg="#E6EEFF", fg="#5E5E5E", font=("Arial", 16, "bold"))
-text_menu.place(x=985, y=190)
+text_menu.place(x=984, y=190)
 
 # "О нас" кнопка
 button_about = tk.Label(root,
