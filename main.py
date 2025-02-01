@@ -68,6 +68,9 @@ frame_image_label = tk.Label(root, image=cube_photo, bg="#E6EEFF")  # Испол
 frame_image_label.image = cube_photo
 frame_image_label.place(x=118, y=200)
 
+text_below_image = tk.Label(root, text="IT-Куб Ростов", bg="#E6EEFF", fg="#0074b4", font=("Arial", 16, "bold"))
+text_below_image.place(x=200, y=520)
+
 button_bg = create_rounded_rectangle(300, 80, 30, "#0074b4")  # Фон кнопки
 button_hover_bg = create_rounded_rectangle(300, 80, 30, "#3472d6")  # Цвет при наведении
 
