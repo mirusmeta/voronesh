@@ -1,6 +1,8 @@
 import tkinter as tk
+from tkinter import ttk
 from PIL import ImageDraw, ImageTk, Image
 import ctypes
+from about import About_Window
 
 try:
     ctypes.windll.shcore.SetProcessDpiAwareness(1)
@@ -21,6 +23,16 @@ def on_enter(button):
 
 def on_leave(button):
     button.config(image=button_bg)
+
+
+def open_about_window():
+    about_window = About_Window()
+
+
+# Скруглённые кнопки
+
+
+
 
 
 root = tk.Tk()
@@ -50,12 +62,12 @@ cube_image = Image.open(cube_image_path)
 cube_image_resized = cube_image.resize((360, 360))  # Изменяем размер изображения
 cube_photo = ImageTk.PhotoImage(cube_image_resized)
 
+
 # Основной квадрат с заголовком "IT-Куб Ростов"
 frame_image_label = tk.Label(root, image=cube_photo, bg="#E6EEFF")  # Используем изображение как фон
 frame_image_label.image = cube_photo
 frame_image_label.place(x=118, y=200)
 
-# Скруглённые кнопки
 button_bg = create_rounded_rectangle(300, 80, 30, "#0074b4")  # Фон кнопки
 button_hover_bg = create_rounded_rectangle(300, 80, 30, "#3472d6")  # Цвет при наведении
 
@@ -64,10 +76,11 @@ text_menu = tk.Label(root, text="Меню", bg="#E6EEFF", fg="#5E5E5E", font=("A
 text_menu.place(x=984, y=190)
 
 # "О нас" кнопка
-button_about = tk.Label(root,
+button_about = tk.Button(root,
                         image=button_bg,
                         text="О нас",
                         compound="center",
+                        command=open_about_window,
                         fg="white",
                         font=("Arial", 14, "bold"),
                         bd=0)
