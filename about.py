@@ -1,8 +1,8 @@
 from tkinter import ttk
 from tkinter import *
 import tkinter as tk
-
 from PIL import ImageDraw, ImageTk, Image
+
 
 class About_Window(Toplevel):
     def __init__(self):
@@ -15,7 +15,6 @@ class About_Window(Toplevel):
 
         self.button_bg = self.create_rounded_rectangle(300, 80, 30, "#0074b4")  # Фон кнопки
         self.button_hover_bg = self.create_rounded_rectangle(300, 80, 30, "#3472d6")
-
         self.close_button = tk.Button(self, text="Назад в меню",
                                       image=self.button_bg,
                                       compound="center",
@@ -23,13 +22,26 @@ class About_Window(Toplevel):
                                       font=("Arial", 14, "bold"),
                                       bd=0,
                                       command=self.dismiss)
-        self.close_button.place(x=1000, y=30, width=300, height=80)
+        self.close_button.place(x=990, y=10, width=300, height=80)
+
         # Цвет при наведении
         self.close_button.image = self.button_bg
         self.button_hover_bg = self.create_rounded_rectangle(300, 80, 30, "#3472d6")  # Цвет при наведении
         self.button_bg = self.create_rounded_rectangle(300, 80, 30, "#0074b4")
         self.close_button.bind("<Enter>", lambda e: self.on_enter(self.close_button))
         self.close_button.bind("<Leave>", lambda e: self.on_leave(self.close_button))
+
+        # Заголовок "О нас"
+        self.info_bg = self.create_rounded_rectangle(350, 80, 30, "#0074b4")  # Фон кнопки
+
+        self.info_label = tk.Label(self, image=self.info_bg,
+                                         text="О нас", compound="center",
+                                         fg="white",
+                                         font=("Arial", 14, "bold"),
+                                         bd=0)
+        self.info_label.image = self.info_bg
+        self.info_label.place(x=-50, y=0, width=350, height=80)
+
 
     def create_rounded_rectangle(self, width, height, radius, color):
         img = Image.new("RGBA", (width, height), (230, 238, 255, 256))
