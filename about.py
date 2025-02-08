@@ -15,6 +15,8 @@ class About_Window(Toplevel):
 
         self.button_bg = self.create_rounded_rectangle(300, 80, 30, "#0074b4")  # Фон кнопки
         self.button_hover_bg = self.create_rounded_rectangle(300, 80, 30, "#3472d6")
+
+        #кнопка "Назад в меню"
         self.close_button = tk.Button(self, text="Назад в меню",
                                       image=self.button_bg,
                                       compound="center",
@@ -42,6 +44,18 @@ class About_Window(Toplevel):
         self.info_label.image = self.info_bg
         self.info_label.place(x=-50, y=0, width=350, height=80)
 
+        #создаем label
+        self.info_bg = self.create_rounded_rectangle(700, 500, 30, "#0074b4")
+
+        self.text = tk.Label(self, image=self.info_bg,
+                                   text="",
+                                   fg="black",
+                                   font=("Arial", 14, "bold"),
+                                   bd=0)
+        self.text.image = self.info_bg
+        self.text.place(x=300, y=200, width=700, height=500)
+        self.text = '''Мы - команда "Звезды"
+        Наша мечта - стать великими программистами!'''
 
     def create_rounded_rectangle(self, width, height, radius, color):
         img = Image.new("RGBA", (width, height), (230, 238, 255, 256))

@@ -29,12 +29,6 @@ def open_about_window():
     about_window = About_Window()
 
 
-# Скруглённые кнопки
-
-
-
-
-
 root = tk.Tk()
 root.title("Информация о команде")
 
