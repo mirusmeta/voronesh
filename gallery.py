@@ -5,13 +5,13 @@ from PIL import ImageDraw, ImageTk, Image
 import ctypes
 
 
-class About_Window(Toplevel):
+class Gallery_Window(Toplevel):
     def __init__(self, master=None):
         super().__init__(master)
         self.title("IT-cube Ростов")
         self.geometry(self.center_window(1300, 800))
         self.config(bg='#E6EEFF')
-        self.iconbitmap('images/info.ico')
+        self.iconbitmap('info.ico')
         self.protocol("WM_DELETE_WINDOW", self.dismiss)
         self.grab_set()
 
@@ -33,7 +33,7 @@ class About_Window(Toplevel):
         self.info_bg = self.create_rounded_rectangle(350, 80, 30, "#0074b4")  # Фон заголовка
 
         self.info_label = tk.Label(self, image=self.info_bg,
-                                   text="О нас", compound="center",
+                                   text="Галерея", compound="center",
                                    fg="white",
                                    font=("Arial", 18, "bold"),
                                    bd=0)
@@ -42,7 +42,7 @@ class About_Window(Toplevel):
         self.title_bg = self.create_rounded_rectangle(400, 50, 20, "#0074b4")
 
         self.team_title = tk.Label(self, image=self.title_bg,
-                                   text="Наша команда",
+                                   text="Галерея",
                                    compound="center",
                                    fg="white",
                                    font=("Arial", 20, "bold"),
@@ -50,28 +50,32 @@ class About_Window(Toplevel):
         self.team_title.image = self.title_bg
         self.team_title.place(x=450, y=220, width=400, height=50)
 
-        # Фон для текста с эмодзи
-        self.text_bg = self.create_rounded_rectangle(700, 300, 20, "#ffffff")
+        self.img_vera = 'images/vera_photo.PNG'
+        self.img_vera = Image.open(self.img_vera)
+        self.img_vera = self.img_vera.resize((500, 500))
+        self.img_vera = ImageTk.PhotoImage(self.img_vera)
 
-        # Основной текст с эмодзи
-        self.info_text = tk.Label(self, image=self.text_bg,
-                                  text=("Мы – команда IT-Куб Ростов, и на этом конкурсе мы представляем "
-                                        "интерактивное приложение, созданное с использованием Python и Tkinter. 💻\n\n"
-                                        "Наша программа объединяет простоту, креативность и современные технологии. 🎨 "
-                                        "Мы доказали, что даже базовые инструменты Python могут быть мощным "
-                                        "инструментом для реализации идей.\n\n"
-                                        "Мы использовали функции, классы и циклы, чтобы создать удобный интерфейс, "
-                                        "в котором каждый элемент проработан с вниманием к деталям. 🚀\n\n"
-                                        "IT-Куб Ростов вдохновляет, творит и впечатляет. Готовы к технологиям будущего "
-                                        "вместе с нами? ✨"),
-                                  compound="center",
-                                  fg="black",
-                                  bg="#ffffff",
-                                  wraplength=650,
-                                  justify="center",
-                                  font=("Arial", 16))
-        self.info_text.image = self.text_bg
-        self.info_text.place(x=300, y=300, width=700, height=300)
+        self.frame_image_label = tk.Label(self, image=self.img_vera, bg="#E6EEFF")
+        self.frame_image_label.image = self.img_vera
+        self.frame_image_label.place(x=800, y=300)
+
+        self.img_misha = 'images/misha_photo.PNG'
+        self.img_misha = Image.open(self.img_misha)
+        self.img_misha = self.img_misha.resize((550, 550))
+        self.img_misha = ImageTk.PhotoImage(self.img_misha)
+
+        self.frame_image_label = tk.Label(self, image=self.img_misha, bg="#E6EEFF")
+        self.frame_image_label.image = self.img_misha
+        self.frame_image_label.place(x=-30, y=300)
+
+        self.img_cat = 'images/developer_cat.PNG'  # Укажите путь к вашему изображению
+        self.img_cat = Image.open(self.img_cat)
+        self.img_cat = self.img_cat.resize((300, 340))  # Изменяем размер изображения
+        self.img_cat = ImageTk.PhotoImage(self.img_cat)
+
+        self.frame_image_label = tk.Label(self, image=self.img_cat, bg="#E6EEFF")  # Используем изображение как фон
+        self.frame_image_label.image = self.img_vera
+        self.frame_image_label.place(x=self.winfo_screenwidth() // 2 - 220, y=455)
 
     def create_rounded_rectangle(self, width, height, radius, color):
         img = Image.new("RGBA", (width, height), (230, 238, 255, 256))
@@ -101,11 +105,7 @@ class About_Window(Toplevel):
 if __name__ == "__main__":
     root = tk.Tk()
     root.withdraw()  # Скрываем главное окно
-    about_window = About_Window()
+    gallery_window = Gallery_Window()
     root.mainloop()
-
-
-
-
 
 
